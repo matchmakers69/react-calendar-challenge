@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700");
+
+@import "tailwindcss";
+@tailwind utilities;
+
+:root {
+	--beige: #fbf6e9;
+	--dark-grey: #2f3a33;
+	--no-decoration: "none";
+	--thin-text: 300;
+	--regular-text: 400;
+	--medium-text: 500;
+	--semibold-text: 600;
+	--bold-text: 700;
+}
+
+* {
+	box-sizing: border-box;
+	outline: none;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+html,
+body,
+:root {
+	scroll-behavior: none;
+}
+
+html {
+	font-size: 62.5%;
+	-webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+	width: 100%;
+	min-height: 100%;
+	overscroll-behavior: none;
+	scroll-behavior: auto;
+}
+
+@theme {
+	--text-xs: 1.2rem;
+	--text-base: 1.4rem;
+	--text-sm: 1.6rem;
+	--text-md: 1.8rem;
+	--text-lg: 3rem;
+	--text-xl: 4rem;
+	--text-2xl: 6rem;
+
+	--color-valencian-orange: #ff8300;
+	--color-broccoli-green: #6ea04b;
+	--color-light-grey: #f5f5f5;
+	--color-medium-grey: #cccccc;
+	--color-beige-divider: #f0e6d2;
+	--color-spinach-green: #3b7a57;
+	--color-berry-blue: #4f86f7;
+	--color-lemon-yellow: #fff700;
+	--color-dark-grey: #222;
+	--color-black: #000;
+	--color-white: #fff;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 1.6rem;
+	overflow-x: hidden;
+	font-family: "Open Sans", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: var(--beige);
+	color: var(--dark-grey);
+	font-weight: var(--regular-text);
+	line-height: 1.5;
+}
