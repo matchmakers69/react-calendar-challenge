@@ -1,13 +1,18 @@
 import { ErrorBoundary } from "react-error-boundary";
-import StoreProvider from "./StoreProvider";
-import { BaseProps } from "shared/types";
+import { BrowserRouter } from "react-router-dom";
+import { BaseProps } from "../types";
+import { StoreProvider } from "./StoreProvider";
 
 type AppProviderProps = BaseProps;
 
-export default function AppProvider({ children }: AppProviderProps) {
+function AppProvider({ children }: AppProviderProps) {
 	return (
 		<StoreProvider>
-			<ErrorBoundary fallback={<div>Something went wrong</div>}>{children}</ErrorBoundary>
+			<ErrorBoundary fallback={<div>Error boundry error</div>}>
+				<BrowserRouter>{children}</BrowserRouter>
+			</ErrorBoundary>
 		</StoreProvider>
 	);
 }
+
+export { AppProvider };

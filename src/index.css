@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 :root {
-	--beige: #fbf6e9;
+	--beige: #f4ece9;
 	--dark-grey: #2f3a33;
 	--no-decoration: "none";
 	--thin-text: 300;
@@ -50,10 +50,13 @@ body {
 	--text-2xl: 6rem;
 
 	--color-valencian-orange: #ff8300;
+	--color-dark-red: #e13404;
+	--color-light-green: #d1eadc;
 	--color-broccoli-green: #6ea04b;
 	--color-light-grey: #f5f5f5;
 	--color-medium-grey: #cccccc;
-	--color-beige-divider: #f0e6d2;
+	--color-beige-darker: #ecd6c4;
+	--color-beige-divider: #ecd6c4;
 	--color-spinach-green: #3b7a57;
 	--color-berry-blue: #4f86f7;
 	--color-lemon-yellow: #fff700;
