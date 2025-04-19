@@ -11,7 +11,7 @@ type ModalProps = {
 	disabled?: boolean;
 } & BaseProps;
 
-export default function Modal({ isOpen, onClose, title, footer, disabled, children }: ModalProps) {
+function Modal({ isOpen, onClose, title, footer, disabled, children }: ModalProps) {
 	const [isModalShown, setIsModalShown] = useState(isOpen);
 
 	useEffect(() => {
@@ -62,3 +62,5 @@ export default function Modal({ isOpen, onClose, title, footer, disabled, childr
 		</>
 	);
 }
+
+export { Modal };

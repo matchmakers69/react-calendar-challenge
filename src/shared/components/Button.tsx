@@ -36,24 +36,26 @@ export type ButtonProps = Readonly<{
 	VariantProps<typeof buttonVariants> &
 	ComponentProps<"button">;
 
-export const Button = forwardRef(
-	(
-		{ className, variant, size, type = "button", disabled, ...props }: ButtonProps,
-		ref: ForwardedRef<HTMLButtonElement>,
-	) => {
-		const Comp = "button"; // for future: could switch to `asChild` using Slot
+function ButtonComponent(
+	{ className, variant, size, type = "button", disabled, children, ...props }: ButtonProps,
+	ref: ForwardedRef<HTMLButtonElement>,
+) {
+	const Comp = "button"; // for future: could switch to `asChild` using Slot
 
-		return (
-			<Comp
-				type={type}
-				className={cn(buttonVariants({ variant, size, className }))}
-				ref={ref}
-				disabled={disabled}
-				aria-disabled={disabled}
-				{...props}
-			/>
-		);
-	},
-);
+	return (
+		<Comp
+			type={type}
+			className={cn(buttonVariants({ variant, size, className }))}
+			ref={ref}
+			disabled={disabled}
+			aria-disabled={disabled}
+			{...props}
+		>
+			{children}
+		</Comp>
+	);
+}
 
+const Button = forwardRef(ButtonComponent);
 Button.displayName = "Button";
+export { Button };

@@ -1,4 +1,6 @@
-export * from "./Logo";
-export * from "./Button";
-export * from "./IndicatorButton";
-export * from "./Modal";
+export { Logo } from "./Logo";
+export { Button } from "./Button";
+export { IndicatorButton } from "./IndicatorButton";
+export { Modal } from "./Modal";
+export { Input } from "./Input";
+export { TextArea } from "./TextArea";
