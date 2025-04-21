@@ -10,13 +10,13 @@ export type FormInputProps = {
 } & InputProps;
 
 function InputField(
-	{ className, type, label, error, placeholder, readOnly, ...props }: FormInputProps,
+	{ className, type, label, error, placeholder, readOnly, min, ...props }: FormInputProps,
 	ref: React.Ref<HTMLInputElement>,
 ) {
 	const id = useId();
 
 	return (
-		<div>
+		<>
 			{label && (
 				<label
 					htmlFor={id}
@@ -40,12 +40,13 @@ function InputField(
 					)}
 					ref={ref}
 					id={id}
+					min={min}
 					readOnly={readOnly}
 					{...props}
 				/>
 				{error && <p className="mt-2 text-xs text-red-500">{error.message}</p>}
 			</div>
-		</div>
+		</>
 	);
 }
 
