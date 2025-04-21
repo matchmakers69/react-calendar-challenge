@@ -5,7 +5,39 @@ export const en = {
 		delete: "Delete",
 	},
 	calendar: {
+		mainSlogan: "Scheduling Without the Stress with iProSuite",
 		title: "Event calendar",
+		today: "Today",
+		showSidebar: "Show Sidebar",
+		hideSidebar: "Hide Sidebar",
+		loadingEvents: "Loading events...",
+		error: "Error loading events",
+	},
+	form: {
+		eventForm: {
+			createEvent: "Create Event",
+			editEvent: "Edit Event",
+			placeholderTitle: "Event title",
+			placeholderDescription: "Event description",
+			labelColor: "Select label color for the event",
+		},
+		validation: {
+			addEvent: {
+				titleMin: "Title must be at least 2 characters long",
+				titleMaxLength: "Title must be at most 30 characters long",
+				descriptionMin: "Description must be at least 10 characters long",
+				descriptionMaxLength: "Description must be at most 100 characters long",
+				start: "Start time is required",
+				end: "End time is required",
+				labelColor: "Label color is required",
+				endTime: "Whoa there, time traveler! The end can’t be before the beginning.",
+				startNotInPast: "Nice try, but we can’t schedule events in the past.",
+			},
+		},
+	},
+	sidebar: {
 		addEvent: "Add Event",
+		copyright: "All rights reserved",
+		copyrightCompanyTitle: "iProSuite",
 	},
 };

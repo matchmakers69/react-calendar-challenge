@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700");
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700&display=swap");
 
 @import "tailwindcss";
 @tailwind utilities;
@@ -40,6 +41,16 @@ body {
 	scroll-behavior: auto;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Oxanium", sans-serif;
+	line-height: 1.2;
+}
+
 @theme {
 	--text-xs: 1.2rem;
 	--text-base: 1.4rem;
@@ -63,6 +74,7 @@ body {
 	--color-dark-grey: #222;
 	--color-black: #000;
 	--color-white: #fff;
+	--color-ring-dark: #2a3132;
 }
 
 body {
@@ -77,4 +89,8 @@ body {
 	color: var(--dark-grey);
 	font-weight: var(--regular-text);
 	line-height: 1.5;
+}
+
+.week-day {
+	font-family: "Oxanium", sans-serif;
 }
