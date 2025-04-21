@@ -18,13 +18,7 @@ function Calendar({ "data-testid": dataTestid }: CalendarProps) {
 	const dispatch = useAppDispatch();
 
 	const handleOpenModalEdit = (event: CalendarEvent) => {
-		dispatch(
-			openModal({
-				mode: "edit",
-				date: new Date(event.start).toISOString(),
-				eventId: event.id,
-			}),
-		);
+		dispatch(openModal({ mode: "edit", eventId: event.id, date: new Date().toISOString() }));
 	};
 
 	const handlePrevMonth = () => {

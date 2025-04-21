@@ -7,5 +7,5 @@ export { SidebarFooterText } from "./SidebarFooterText";
 export { CalendarContent } from "./CalendarContent";
 export { CalendarMonthsSlider } from "./CalendarMonthsSlider";
 export { CalendarDay } from "./CalendarDay";
-export { AddEventForm } from "./AddEventForm";
+export { EventForm } from "./EventForm";
 export { EventLabelsColorPicker } from "./EventLabelsColorPicker";

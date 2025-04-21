@@ -105,6 +105,12 @@ const getMonthMatrix = (month: number = new Date().getMonth()) => {
 const normalizeDate = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
 const normalizeDateTime = (value: string) => formatISO(parseISO(value));
 
+const formatForDatetimeLocal = (dateString?: string) => {
+	if (!dateString) return "";
+	const date = parseISO(dateString);
+	return format(date, "yyyy-MM-dd'T'HH:mm");
+};
+
 export {
 	today,
 	getNextMonth,
@@ -124,4 +130,5 @@ export {
 	formattedCurrentDate,
 	normalizeDate,
 	normalizeDateTime,
+	formatForDatetimeLocal,
 };

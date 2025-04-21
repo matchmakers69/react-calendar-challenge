@@ -26,7 +26,7 @@ function CalendarDay({ cell, onEditEvent }: CalendarDayProps) {
 							aria-label={`Event ${event.title}`}
 							tabIndex={0}
 							className="truncate text-white text-xs font-semibold  py-0.5 rounded"
-							style={{ backgroundColor: event.label }}
+							style={{ backgroundColor: event.categoryLabelColor }}
 							onClick={(e) => {
 								e.stopPropagation();
 								onEditEvent(event);

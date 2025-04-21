@@ -22,7 +22,7 @@ describe("<EventLabelsColorPicker />", () => {
 		render(<EventLabelsColorPicker eventColorLabels={mockLabels} onSelect={mockFn} selectedColor="" />);
 
 		const redButton = screen.getByRole("button", {
-			name: /select color: bg-red-500/i,
+			name: /Select color category: bg-red-500/i,
 		});
 		fireEvent.click(redButton);
 		expect(mockFn).toHaveBeenCalledWith("bg-red-500");
@@ -31,13 +31,15 @@ describe("<EventLabelsColorPicker />", () => {
 	it("should apply selected styling to the selected color", () => {
 		const mockFn = vi.fn();
 		render(
-			<EventLabelsColorPicker eventColorLabels={mockLabels} onSelect={mockFn} selectedColor="bg-blue-500" />,
+			<EventLabelsColorPicker
+				eventColorLabels={mockLabels}
+				onSelect={mockFn}
+				data-testid="color"
+				selectedColor="bg-blue-500"
+			/>,
 		);
 
-		const selectedButton = screen.getByRole("button", {
-			name: /select color: bg-blue-500 \(selected\)/i,
-		});
-
-		expect(selectedButton).toHaveClass("ring-2 ring-black");
+		const selectedButton = screen.getByTestId("color-bg-blue-500");
+		expect(selectedButton).toHaveClass("ring-2 ring-black-500");
 	});
 });

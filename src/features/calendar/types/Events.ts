@@ -4,5 +4,5 @@ export type CalendarEvent = {
 	description?: string;
 	start: string;
 	end: string;
-	label: string;
+	categoryLabelColor: string;
 };

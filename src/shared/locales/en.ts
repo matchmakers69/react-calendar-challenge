@@ -16,10 +16,15 @@ export const en = {
 	form: {
 		eventForm: {
 			createEvent: "Create Event",
+			saveEvent: "Save Event",
 			editEvent: "Edit Event",
 			placeholderTitle: "Event title",
 			placeholderDescription: "Event description",
-			labelColor: "Select label color for the event",
+			categoryLabelColor: "Select color for the event category",
+			colorPicker: {
+				selectColor: "Select color category",
+				categoryColorSelected: "Category color selected",
+			},
 		},
 		validation: {
 			addEvent: {
@@ -29,9 +34,10 @@ export const en = {
 				descriptionMaxLength: "Description must be at most 100 characters long",
 				start: "Start time is required",
 				end: "End time is required",
-				labelColor: "Label color is required",
+				categoryLabelColor: "Label color is required",
 				endTime: "Whoa there, time traveler! The end can’t be before the beginning.",
 				startNotInPast: "Nice try, but we can’t schedule events in the past.",
+				endNotInPast: "Events ending in the past? Not on my watch.",
 			},
 		},
 	},

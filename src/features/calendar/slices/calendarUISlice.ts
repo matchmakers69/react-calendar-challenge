@@ -21,7 +21,7 @@ const CalendarUISlice = createSlice({
 		toggleSidebar(state) {
 			state.isSidebarOpen = !state.isSidebarOpen;
 		},
-		openModal(state, action: PayloadAction<ModalPayload>) {
+		openModal: (state, action: PayloadAction<ModalPayload>) => {
 			state.isModalOpen = true;
 			state.modalData = action.payload;
 		},

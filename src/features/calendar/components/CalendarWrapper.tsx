@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import { CalendarSidebar } from "./CalendarSidebar";
 import { CalendarContent } from "./CalendarContent";
 import { useAppSelector } from "@/app/useAppSelector";
@@ -6,17 +7,18 @@ import { Modal } from "@/shared/components";
 import { Button } from "@/shared/components";
 import { t } from "@/shared/locales";
 import { Calendar } from "./Calendar";
-import { closeModal } from "../slices";
-import { AddEventForm } from "./AddEventForm";
+import { addEvent, closeModal, updateEvent } from "../slices";
+import { EventForm } from "./EventForm";
 
 function CalendarWrapper() {
 	const dispatch = useAppDispatch();
 	const { isModalOpen, modalData } = useAppSelector((state) => state.calendarUI);
-
+	const events = useAppSelector((state) => state.calendarEvent.events);
 	const handleClose = () => dispatch(closeModal());
 
 	const isEditMode = modalData?.mode === "edit";
 	const eventId = isEditMode ? modalData.eventId : null;
+	const selectedEvent = isEditMode ? events.find((e) => e.id === eventId) : undefined;
 	return (
 		<>
 			<div data-testid="calendar-wrapper" className="relative isolate flex min-h-[100svh] w-full">
@@ -43,13 +45,23 @@ function CalendarWrapper() {
 						</Button>
 					}
 				>
-					{isEditMode ? (
-						<p>Editing event with ID: {eventId}</p>
-					) : (
-						<>
-							<AddEventForm />
-						</>
-					)}
+					<EventForm
+						mode={isEditMode ? "edit" : "create"}
+						initialValues={selectedEvent}
+						onSubmit={(data) => {
+							if (isEditMode) {
+								dispatch(
+									updateEvent({
+										...data,
+										id: selectedEvent?.id || uuidv4(),
+									}),
+								);
+							} else {
+								dispatch(addEvent({ ...data, id: uuidv4() }));
+							}
+							handleClose();
+						}}
+					/>
 				</Modal>
 			)}
 		</>

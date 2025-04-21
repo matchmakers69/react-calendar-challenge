@@ -5,7 +5,7 @@
 		"description": "Daily sync with the dev team",
 		"start": "2025-04-09T09:00:00.000Z",
 		"end": "2025-04-10T09:30:00.000Z",
-		"label": "#4f86f7"
+		"categoryLabelColor": "#4f86f7"
 	},
 	{
 		"id": "2",
@@ -13,7 +13,7 @@
 		"description": "Planning session for Q2 roadmap",
 		"start": "2025-04-01T11:00:00.000Z",
 		"end": "2025-04-02T12:30:00.000Z",
-		"label": "#6ea04b"
+		"categoryLabelColor": "#6ea04b"
 	},
 	{
 		"id": "3",
@@ -21,6 +21,6 @@
 		"description": "Monthly feedback and career check-in",
 		"start": "2025-04-19T14:00:00.000Z",
 		"end": "2025-04-19T14:45:00.000Z",
-		"label": "#ff8300"
+		"categoryLabelColor": "#ff8300"
 	}
 ]
