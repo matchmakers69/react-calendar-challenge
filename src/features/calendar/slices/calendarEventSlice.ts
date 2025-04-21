@@ -30,7 +30,12 @@ const initialState: CalendarEventState = {
 const CalendarEventSlice = createSlice({
 	name: "calendarEvent",
 	initialState,
-	reducers: {},
+	reducers: {
+		addEvent: (state, action: PayloadAction<CalendarEvent>) => {
+			state.events.push(action.payload);
+			localStorage.setItem("events", JSON.stringify(state.events));
+		},
+	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchCalendarEvents.pending, (state) => {
 			state.loadingStatus = LoadingStatus.PENDING;
@@ -58,6 +63,7 @@ const CalendarEventSlice = createSlice({
 	},
 });
 
+export const { addEvent } = CalendarEventSlice.actions;
 const calendarEventReducer = CalendarEventSlice.reducer;
 
 export { calendarEventReducer };

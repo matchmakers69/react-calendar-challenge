@@ -7,6 +7,7 @@ import { Button } from "@/shared/components";
 import { t } from "@/shared/locales";
 import { Calendar } from "./Calendar";
 import { closeModal } from "../slices";
+import { AddEventForm } from "./AddEventForm";
 
 function CalendarWrapper() {
 	const dispatch = useAppDispatch();
@@ -42,7 +43,13 @@ function CalendarWrapper() {
 						</Button>
 					}
 				>
-					{isEditMode ? <p>Editing event with ID: {eventId}</p> : <>Adding event form</>}
+					{isEditMode ? (
+						<p>Editing event with ID: {eventId}</p>
+					) : (
+						<>
+							<AddEventForm />
+						</>
+					)}
 				</Modal>
 			)}
 		</>
