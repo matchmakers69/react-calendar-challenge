@@ -1,3 +1,3 @@
-export * from "./App";
-export * from "./store";
-export * from "./rootReducer";
+export { App } from "./App";
+export { store } from "./store";
+export { rootReducer, appReducer } from "./rootReducer";

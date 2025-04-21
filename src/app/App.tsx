@@ -1,10 +1,12 @@
-import CalendarWrapper from "src/features/calendar/components/CalendarWrapper";
-import AppProvider from "src/shared/providers/AppProvider";
+import { CalendarWrapper } from "@/features/calendar/components";
+import { AppProvider } from "@/shared/providers";
 
-export default function App() {
+function App() {
 	return (
 		<AppProvider>
 			<CalendarWrapper />
 		</AppProvider>
 	);
 }
+
+export { App };

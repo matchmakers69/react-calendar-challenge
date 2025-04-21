@@ -9,8 +9,10 @@ const reducers = {
 	calendarUI: calendarUIReducer,
 };
 
-export const appReducer = combineReducers<typeof reducers>(reducers);
+const appReducer = combineReducers<typeof reducers>(reducers);
 
-export const rootReducer: Reducer<RootState> = (state, action) => {
+const rootReducer: Reducer<RootState> = (state, action) => {
 	return appReducer(state, action);
 };
+
+export { appReducer, rootReducer };
