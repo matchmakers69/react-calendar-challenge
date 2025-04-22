@@ -7,18 +7,26 @@ import { Modal } from "@/shared/components";
 import { Button } from "@/shared/components";
 import { t } from "@/shared/locales";
 import { Calendar } from "./Calendar";
-import { addEvent, closeModal, updateEvent } from "../slices";
+import { addEvent, closeModal, deleteEvent, updateEvent } from "../slices";
 import { EventForm } from "./EventForm";
 
 function CalendarWrapper() {
-	const dispatch = useAppDispatch();
 	const { isModalOpen, modalData } = useAppSelector((state) => state.calendarUI);
+	const dispatch = useAppDispatch();
+
 	const events = useAppSelector((state) => state.calendarEvent.events);
 	const handleClose = () => dispatch(closeModal());
 
 	const isEditMode = modalData?.mode === "edit";
 	const eventId = isEditMode ? modalData.eventId : null;
 	const selectedEvent = isEditMode ? events.find((e) => e.id === eventId) : undefined;
+
+	const handleDeleteEvent = () => {
+		if (selectedEvent) {
+			dispatch(deleteEvent(selectedEvent.id));
+			handleClose();
+		}
+	};
 	return (
 		<>
 			<div data-testid="calendar-wrapper" className="relative isolate flex min-h-[100svh] w-full">
@@ -33,11 +41,15 @@ function CalendarWrapper() {
 					onClose={handleClose}
 					title={isEditMode ? `${t.form.eventForm.editEvent}` : `${t.form.eventForm.createEvent}`}
 					actionLabel={t.common.cancel}
+					{...(isEditMode && {
+						footerAction: handleDeleteEvent,
+						footerActionLabel: t.common.delete,
+					})}
 					footer={
 						<Button
 							data-testid="cancel-button"
 							type="button"
-							variant="destructive"
+							variant="outline"
 							size="sm"
 							onClick={handleClose}
 						>

@@ -39,6 +39,10 @@ const CalendarEventSlice = createSlice({
 			state.events = state.events.map((event) => (event.id === action.payload.id ? action.payload : event));
 			localStorage.setItem("events", JSON.stringify(state.events));
 		},
+		deleteEvent: (state, action: PayloadAction<string>) => {
+			state.events = state.events.filter((event) => event.id !== action.payload);
+			localStorage.setItem("events", JSON.stringify(state.events));
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchCalendarEvents.pending, (state) => {
@@ -67,7 +71,7 @@ const CalendarEventSlice = createSlice({
 	},
 });
 
-export const { addEvent, updateEvent } = CalendarEventSlice.actions;
+export const { addEvent, updateEvent, deleteEvent } = CalendarEventSlice.actions;
 const calendarEventReducer = CalendarEventSlice.reducer;
 
 export { calendarEventReducer };

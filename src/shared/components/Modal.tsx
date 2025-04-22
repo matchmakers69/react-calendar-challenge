@@ -1,6 +1,7 @@
 import { ReactElement, useCallback, useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { BaseProps } from "../types";
+import { Button } from "./Button";
 
 type ModalProps = {
 	isOpen?: boolean;
@@ -9,9 +10,20 @@ type ModalProps = {
 	footer?: ReactElement;
 	actionLabel: string;
 	disabled?: boolean;
+	footerAction?: () => void;
+	footerActionLabel?: string;
 } & BaseProps;
 
-function Modal({ isOpen, onClose, title, footer, disabled, children }: ModalProps) {
+function Modal({
+	isOpen,
+	onClose,
+	title,
+	footer,
+	disabled,
+	footerAction,
+	footerActionLabel,
+	children,
+}: ModalProps) {
 	const [isModalShown, setIsModalShown] = useState(isOpen);
 
 	useEffect(() => {
@@ -26,6 +38,13 @@ function Modal({ isOpen, onClose, title, footer, disabled, children }: ModalProp
 		onClose();
 	}, [disabled, onClose]);
 
+	const handleFooterAction = useCallback(() => {
+		if (disabled || !footerAction) {
+			return;
+		}
+		footerAction();
+	}, [disabled, footerAction]);
+
 	if (!isOpen) {
 		return null;
 	}
@@ -33,14 +52,14 @@ function Modal({ isOpen, onClose, title, footer, disabled, children }: ModalProp
 	return (
 		<>
 			<div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-neutral-800/70 outline-none focus:outline-none">
-				<div className="relative mx-auto my-6 h-full w-full md:h-auto md:w-4/6 lg:h-auto lg:w-3/6 xl:w-2/5">
+				<div className="relative mx-auto my-6 h-full w-full md:h-auto md:w-4/6 lg:h-auto lg:w-3/6 xl:w-2/5 2xl:w-1/3">
 					<div
 						className={`translate h-full duration-300 
             ${isModalShown ? "translate-y-0" : "translate-y-full"} 
             ${isModalShown ? "opacity-100" : "opacity-0"}`}
 					>
 						<div className="translate relative flex h-full w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none md:h-auto lg:h-auto">
-							<header className="relative flex items-center justify-center rounded-t border-b-[1px] p-4">
+							<header className="relative flex items-center justify-center rounded-t p-4">
 								<button
 									aria-label="Close Modal"
 									onClick={handleClose}
@@ -52,8 +71,15 @@ function Modal({ isOpen, onClose, title, footer, disabled, children }: ModalProp
 								<div className="text-lg font-semibold">{title}</div>
 							</header>
 							<div className="relative flex-auto p-6">{children}</div>
-							<footer className="flex flex-col bg-light-grey p-4 gap-2 rounded-b-lg">
-								<div className="flex w-full  flex-row items-center gap-4 justify-end">{footer}</div>
+							<footer className="flex flex-col bg-light-grey p-4 gap-4 rounded-b-lg">
+								<div className="flex w-full  flex-row items-center gap-8 justify-end">
+									{footerAction && footerActionLabel && (
+										<Button type="button" variant="destructive" size="sm" onClick={handleFooterAction}>
+											{footerActionLabel}
+										</Button>
+									)}
+									{footer}
+								</div>
 							</footer>
 						</div>
 					</div>
