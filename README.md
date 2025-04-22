@@ -14,22 +14,29 @@ The goal of this project is to demonstrate:
 
 The application allows users to view and interact with a calendar interface. It manages state efficiently (e.g., selected dates, events, views) and is built for extensibility and maintainability — following industry standards and best practices.
 
+You can check out the live version of the app [here](https://react-calendar-challenge.vercel.app/).
+
 ## Key Features
 
-- 📅 Month/week/day calendar views (switchable)
+- 📅 Month/week/day calendar
 - ➕ Add/edit/delete calendar events
 - 🧠 Global state management using Redux Toolkit
 - 🎨 Feature-driven and component-driven architecture
 - ⚙️ Custom hooks for logic abstraction
 - 🧪 Unit and integration tests using Testing Library and Vitest
+- 📅 Date handling with **date-fns**
+- 📝 Form validation with **React Hook Form** and **Zod**
 
 ## Tech Stack
 
 - React
 - Redux Toolkit
 - TypeScript
+- date-fns (for date manipulation)
+- React Hook Form (with Zod validation)
 - ESLint + Prettier
-- Vite (or CRA / Next.js)
+- Vite
+- Testing Library & Vitest
 
 ## 📝 Text & Label Management
 
@@ -54,6 +61,25 @@ All shared application texts (e.g., button labels, headings, error messages) are
 ---
 
 ⚠️ **Note**: For larger applications or production-grade internationalization, using a dedicated library such as [react-i18next](https://react.i18next.com/) is recommended for handling multiple languages, pluralization, dynamic text interpolation, and locale detection.
+
+## Future Improvements
+
+While this app is functional, there are areas that can be further improved:
+
+- ✅ **Better unit tests coverage**  
+  Increase test coverage, particularly around form validation, state updates, and event interactions.
+
+- ✅ **Improved handling of overlapping events**  
+  Implement better logic for managing overlapping events in the calendar, such as visual indicators or stacking events.
+
+- ✅ **Input sanitization**  
+  Implement input sanitization to protect against potentially malicious input or malformed data.
+
+- ✅ **Rate limiting for user actions**  
+  Introduce rate limiting for certain user actions (e.g., adding/editing events) to improve performance and prevent abuse.
+
+- ✅ **Basic CSRF protection simulation**  
+  Simulate basic Cross-Site Request Forgery (CSRF) protection for a more secure application, especially in production environments.
 
 ## Setup Instructions
 
