@@ -8,14 +8,22 @@ import { CalendarMonthsSlider } from "./CalendarMonthsSlider";
 import { BaseProps } from "@/shared/types";
 import { useAppDispatch } from "@/app/useAppDispatch";
 import { t } from "@/shared/locales";
-import { openModal } from "../slices";
+import { openModal, redo, toggleSidebar, undo } from "../slices";
+import { CalendarHeaderButtonControls } from "./CalendarHeaderButtonControls";
+import { useAppSelector } from "@/app/useAppSelector";
 
 type CalendarProps = BaseProps;
 
 function Calendar({ "data-testid": dataTestid }: CalendarProps) {
 	const [currentDate, setCurrentDate] = useState(getToday());
 	const { isLoadingEvents, isError, events } = useFetchCalendarEvents();
+	const { isSidebarOpen } = useAppSelector((state) => state.calendarUI);
+	const { past, future } = useAppSelector((state) => state.calendarEvent);
+
 	const dispatch = useAppDispatch();
+
+	const isUndoAvailable = past.length > 0;
+	const isRedoAvailable = future.length > 0;
 
 	const handleOpenModalEdit = (event: CalendarEvent) => {
 		dispatch(openModal({ mode: "edit", eventId: event.id, date: new Date().toISOString() }));
@@ -33,17 +41,39 @@ function Calendar({ "data-testid": dataTestid }: CalendarProps) {
 		setCurrentDate(getToday());
 	};
 
+	const handleToggleSidebar = () => {
+		dispatch(toggleSidebar());
+	};
+
+	const handleUndo = () => {
+		dispatch(undo());
+	};
+
+	const handleRedo = () => {
+		dispatch(redo());
+	};
+
 	const calendarCells = useCalendarCells(currentDate, events || []);
 
 	return (
 		<div className="calendar flex flex-col flex-1 overflow-hidden" data-testid={dataTestid}>
 			<header className="calendar-header">
-				<CalendarMonthsSlider
-					currentDate={currentDate}
-					onPrevMonth={handlePrevMonth}
-					onNextMonth={handleNextMonth}
-					onResetToToday={handleResetToToday}
-				/>
+				<div className="flex flex-col items-end lg:flex-row lg:justify-between lg:items-center px-8 mb-14">
+					<CalendarHeaderButtonControls
+						isSidebarOpen={isSidebarOpen}
+						handleToggleSidebar={handleToggleSidebar}
+						onResetToToday={handleResetToToday}
+						onUndo={handleUndo}
+						onRedo={handleRedo}
+						isUndoAvailable={isUndoAvailable}
+						isRedoAvailable={isRedoAvailable}
+					/>
+					<CalendarMonthsSlider
+						currentDate={currentDate}
+						onPrevMonth={handlePrevMonth}
+						onNextMonth={handleNextMonth}
+					/>
+				</div>
 				<CalendarWeekDays />
 			</header>
 

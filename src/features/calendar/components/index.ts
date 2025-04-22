@@ -9,3 +9,4 @@ export { CalendarMonthsSlider } from "./CalendarMonthsSlider";
 export { CalendarDay } from "./CalendarDay";
 export { EventForm } from "./EventForm";
 export { EventLabelsColorPicker } from "./EventLabelsColorPicker";
+export { CalendarHeaderButtonControls } from "./CalendarHeaderButtonControls";
