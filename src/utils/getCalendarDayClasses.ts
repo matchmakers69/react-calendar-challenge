@@ -11,10 +11,6 @@ function getCalendarDayClasses(cell: CalendarCell): string {
 		baseClasses.push("bg-white", "text-black");
 	}
 
-	if (cell.events.length > 0) {
-		baseClasses.push("cursor-pointer");
-	}
-
 	return baseClasses.join(" ");
 }
 

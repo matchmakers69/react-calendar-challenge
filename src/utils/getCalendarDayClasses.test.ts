@@ -48,26 +48,6 @@ describe("getCalendarDayClasses", () => {
 		expect(result).not.toContain("text-gray-400");
 		expect(result).not.toContain("bg-light-green");
 	});
-	it("should include cursor-pointer class when events are present", () => {
-		const cell: CalendarCell = {
-			date: new Date(),
-			isToday: false,
-			isCurrentMonth: true,
-			events: [
-				{
-					id: "1",
-					title: "Test Event",
-					categoryLabelColor: "#000",
-					start: "",
-					end: "",
-				},
-			],
-		};
-
-		const result = getCalendarDayClasses(cell);
-
-		expect(result).toContain("cursor-pointer");
-	});
 
 	it("should not include cursor-pointer when there are no events", () => {
 		const cell: CalendarCell = {

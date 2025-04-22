@@ -18,15 +18,17 @@ function CalendarDay({ cell, onEditEvent }: CalendarDayProps) {
 				<header className="flex flex-col items-center justify-center h-[3.5rem]">
 					<span className="day-number text-center font-bold">{formatDay(cell.date)}</span>
 				</header>
-				<div className="flex-1">
+				<div className="flex-1 flex flex-col gap-1 sm:gap-1.5">
 					{cell.events.map((event) => (
 						<div
 							key={event.id}
 							role="button"
 							aria-label={`Event ${event.title}`}
 							tabIndex={0}
-							className="truncate text-white text-xs font-semibold  py-0.5 rounded"
-							style={{ backgroundColor: event.categoryLabelColor }}
+							className="text-white cursor-pointer text-xs lg:text-sm font-semibold py-4 px-1  bg-opacity-90"
+							style={{
+								backgroundColor: event.categoryLabelColor,
+							}}
 							onClick={(e) => {
 								e.stopPropagation();
 								onEditEvent(event);
@@ -38,7 +40,9 @@ function CalendarDay({ cell, onEditEvent }: CalendarDayProps) {
 								}
 							}}
 						>
-							<p className="p-2 text-xs leading-tight line-clamp-4">{event.title}</p>
+							<p className="truncate text-center [writing-mode:vertical-rl] lg:[writing-mode:horizontal-tb]">
+								{event.title}
+							</p>
 						</div>
 					))}
 				</div>
@@ -48,3 +52,4 @@ function CalendarDay({ cell, onEditEvent }: CalendarDayProps) {
 }
 
 export { CalendarDay };
+// writing-mode-vertical text-orientation-upright md:writing-mode-horizontal md:text-orientation-mixed
